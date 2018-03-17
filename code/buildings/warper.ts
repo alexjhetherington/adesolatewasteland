@@ -19,7 +19,7 @@ class warper extends building{
 			'\u06F3\u0E96\u0623\u06F3'
 		];
 		
-		this.description = "A collection of strange monuments to the sky. The area glows with an eerie blue energy. Things nearby move with a strange halting motion, jumping from one place to the next. What is this place's purpose?";
+		this.description = "A collection of strange monuments to the sky. The area glows with an eerie blue energy. Things nearby move with a strange halting motion, jumping from one place to the next. The Eddy is screaming louder than before.";
 	}
 	
 	
