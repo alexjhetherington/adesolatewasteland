@@ -16,7 +16,7 @@ class cessSwamp extends painBuildingTorture{
 		];
 		
 		this.description = "The run-off from the bigger crushers lands in a large depression. Over time life has emerged, and now the area is a stinking acidic swamp.";
-		this.buildingMessage = "Requires 1200 Bones and 3 adjacent Big Crushers.";
+		this.buildingMessage = "Requires 1200 Bones and 3 Big Crushers adjacent to the Cess Swamp.";
 		
 		this.maxWanderingChildren = 3;
 		this.wandererDescription = "The monster wanders near the cess swamp. It longs to swim there, though it knows it is forbidden from doing so.";

@@ -15,7 +15,7 @@ class cesspit extends painBuildingTorture{
 		];
 		
 		this.description = "A pit filled with the run-off from the crushers. Souls struggle to stay afloat.";
-		this.buildingMessage = "Requires 100 Bones and 3 adjacent crushers.";
+		this.buildingMessage = "Requires 100 Bones and 3 crushers adjacent to the cesspit.";
 		
 		this.maxWanderingChildren = 1;
 		this.wandererDescription = "The monster wanders near the cesspit. It enjoys the stink.";
