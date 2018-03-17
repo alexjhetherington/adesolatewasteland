@@ -18,7 +18,7 @@ class mall extends painBuildingTorture{
 		];
 		
 		this.description = "An abandoned mall. Is there a more hellish place?";
-		this.buildingMessage = "Requires 1400 Bones and south side road. ";
+		this.buildingMessage = "Requires 1400 Bones and road connected to the mall's south side.";
 		
 		this.maxWanderingChildren = 3;
 		this.wandererDescription = "The monster wanders near the abandoned mall, wary. The monster has never seen the mall before; it doesn't know what to make of it.";
