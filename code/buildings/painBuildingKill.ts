@@ -38,6 +38,7 @@ class painBuildingKill extends consumer{
 				if(this.killingTimeElapsed > this.getKillingTime()){
 					this.killingTimeElapsed = 0;
 					this.currentOccupants.splice(0, 1);
+					this.resources.turnSoulToBones();
 					this.resources.addPain(this.getPainPerKill());
 				}				
 			}
