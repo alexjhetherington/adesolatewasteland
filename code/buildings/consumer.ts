@@ -51,4 +51,8 @@ class consumer extends building{
 	public getDeleteSouls(){
 		return this.getMostRecentBones() + this.currentOccupants.length;
 	}
+	
+	public getCurrentOccupants(){
+		return this.currentOccupants;
+	}
 }

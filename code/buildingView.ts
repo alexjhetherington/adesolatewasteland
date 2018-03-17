@@ -42,6 +42,14 @@ class buildingView{
 			this.populateOccupants(asGhetto.getOccupants());
 			this.div.appendChild(this.li);
 		}
+		
+		//Should be in a subclass
+		if(this.building instanceof painBuildingTorture){
+			var asTorture = this.building as painBuildingTorture;
+			this.li = document.createElement("ul");
+			this.populateOccupants(asTorture.getCurrentOccupants());
+			this.div.appendChild(this.li);
+		}
     
 		if(this.building instanceof ziggurat){
 			var asZiggurat = this.building as ziggurat;
