@@ -71,10 +71,14 @@ class endView{
 			this.div.appendChild(score);
 			
 			this.div.appendChild(document.createElement("hr"));
-			var advertising = document.createElement('p');
-			advertising.innerHTML = "This is temporary while I create my website. In the future advertising for my website (not real ads don't worry) will be here. Thanks for being an early player!"
+			var advertising1 = document.createElement('p');
+			advertising1.innerHTML = "My website is www.footnotesforthefuture.com";
 			
-			this.div.appendChild(advertising);
+			var advertising2 = document.createElement('p');
+			advertising2.innerHTML = "You can email me at footnotesforthefuture@gmail.com";
+			
+			this.div.appendChild(advertising1);
+			this.div.appendChild(advertising2);
 		}
   }
 }
