@@ -398,7 +398,14 @@ class mapView extends gridRenderer{
 				super.renderGridSquare(gridSquareX, gridSquareY, '?', 'white', 'black');
 			}
       else if (this.tempBuild == null){
-        super.renderGridSquare(gridSquareX, gridSquareY, ' ', 'white', 'black');
+				var selectedActor = this.map.getActorOccupyingGridIndex(gridSquareX, gridSquareY);
+				
+				if(selectedActor != null){
+					super.renderGridSquare(gridSquareX, gridSquareY, '?', 'white', 'black');
+				}	
+				else{
+					super.renderGridSquare(gridSquareX, gridSquareY, ' ', 'white', 'black');
+				}
       }
     }
   }
