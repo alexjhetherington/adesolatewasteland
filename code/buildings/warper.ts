@@ -1,5 +1,3 @@
-/// <reference path="../building.ts"/>
-
 class warper extends building{
 	
 	private warpRadius = 2;

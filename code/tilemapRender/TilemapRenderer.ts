@@ -1,7 +1,3 @@
-/// <reference path="./Tile.ts"/>
-/// <reference path="./BackgroundRenderer.ts"/>
-/// <reference path="./CharacterRenderer.ts"/>
-
 class TilemapRenderer{
 	
 	private tileMap : Tile[][] = [];

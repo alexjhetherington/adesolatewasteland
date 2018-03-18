@@ -1,5 +1,3 @@
-/// <reference path="./resources.ts"/>
-
 class resourceView{
 	protected parent : HTMLElement;
 	

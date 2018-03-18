@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingKill.ts"/>
-
 class hangman extends painBuildingKill{
 	
 	constructor(map : map, resources : resources){

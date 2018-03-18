@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingTorture.ts"/>
-
 class cessSwamp extends painBuildingTorture{
 	
 	constructor(map : map, resources : resources){

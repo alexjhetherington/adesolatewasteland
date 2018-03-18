@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingKill.ts"/>
-
 class lightningRod extends painBuildingKill{
 	
 	constructor(map : map, resources : resources){

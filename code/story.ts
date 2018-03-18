@@ -1,7 +1,3 @@
-/// <reference path="./resources.ts"/>
-/// <reference path="./soulView.ts"/>
-/// <reference path="./global.d.ts"/>
-
 class story{
 
   private resources : resources;

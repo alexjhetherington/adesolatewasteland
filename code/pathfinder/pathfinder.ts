@@ -1,8 +1,3 @@
-/// <reference path="./path.ts"/>
-/// <reference path="./node.ts"/>
-/// <reference path="../hellPathGraph.ts"/>
-/// <reference path="../building.ts"/>
-
 class pathfinder{
 	public findPath(start : node, end : node) : path{
 		if(start == end){

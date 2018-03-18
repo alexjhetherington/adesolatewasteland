@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingTorture.ts"/>
-
 class catacombs extends painBuildingTorture{
 	
 	constructor(map : map, resources : resources){

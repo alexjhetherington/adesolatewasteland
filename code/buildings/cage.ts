@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingTorture.ts"/>
-
 class cage extends painBuildingTorture{
 	
 	constructor(map : map, resources : resources){

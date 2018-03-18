@@ -1,5 +1,3 @@
-/// <reference path="./pathfinder/node.ts"/>
-
 class hellPathGraph{
 	private nodeDictionary : node[] = [];
 	

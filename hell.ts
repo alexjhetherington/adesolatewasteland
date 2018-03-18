@@ -1,6 +1,3 @@
-/// <reference path="code/game.ts"/>
-/// <reference path="code/polyfill/arrayIncludes.ts"/>
-
 module Main{
   var game : Game = null;
 

@@ -3,5 +3,17 @@
 		"lib" : [ "es7", "DOM" ],
 		"outFile" : "main.js",
 		"watch": true
-	}
+	},
+	
+	"files" : [
+		"hell.ts",
+		"./code/building.ts",
+		"./code/buildings/consumer.ts",
+		"./code/buildings/painBuildingTorture.ts",
+		"./code/buildings/painBuildingKill.ts"
+	],
+	
+	"include" : [
+		"**/*.ts"
+	]
 }

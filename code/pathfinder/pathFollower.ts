@@ -1,6 +1,3 @@
-/// <reference path="./waypoint.ts"/>
-/// <reference path="./path.ts"/>
-
 class pathFollower{
 	private lastUpdate : number;
 	

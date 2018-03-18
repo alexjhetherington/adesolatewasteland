@@ -1,21 +1,3 @@
-/// <reference path="./buildings/hangman.ts"/>
-/// <reference path="./buildings/cesspit.ts"/>
-/// <reference path="./buildings/labyrinth1.ts"/>
-/// <reference path="./buildings/labyrinth2.ts"/>
-/// <reference path="./buildings/labyrinth3.ts"/>
-/// <reference path="./buildings/labyrinth4.ts"/>
-/// <reference path="./buildings/labyrinth5.ts"/>
-/// <reference path="./buildings/solitude.ts"/>
-/// <reference path="./buildings/oasis.ts"/>
-/// <reference path="./buildings/gulag.ts"/>
-/// <reference path="./buildings/catacombs.ts"/>
-/// <reference path="./buildings/sisyphus.ts"/>
-/// <reference path="./buildings/soulWell.ts"/>
-/// <reference path="./buildings/cage.ts"/>
-/// <reference path="./buildings/cessSwamp.ts"/>
-/// <reference path="./buildings/lightningRod.ts"/>
-/// <reference path="./buildings/mall.ts"/>
-
 class painBuildingProgress{
 	
 	private buildingProgression;

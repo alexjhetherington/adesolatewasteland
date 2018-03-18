@@ -1,8 +1,3 @@
-/// <reference path="soul.ts"/>
-/// <reference path="./resources.ts"/>
-/// <reference path="./buildingView.ts"/>
-/// <reference path="./simpleMessageView.ts"/>
-
 class soulView{
 
   private div : HTMLElement = null;

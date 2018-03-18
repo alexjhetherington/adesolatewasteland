@@ -1,5 +1,3 @@
-/// <reference path="./CharacterRenderer.ts"/>
-
 class TransientRenderer{
 	private tiles = [];
 	

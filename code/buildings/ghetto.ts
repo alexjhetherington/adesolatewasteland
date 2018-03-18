@@ -1,5 +1,3 @@
-/// <reference path="../resources.ts"/>
-
 class ghetto extends building{
 	
 	private resources : resources;

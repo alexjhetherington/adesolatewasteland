@@ -1,5 +1,3 @@
-/// <reference path="./consumer.ts"/>
-
 class bigCrusher extends consumer{
 			
 	private lastUpdate : number;

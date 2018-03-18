@@ -1,5 +1,3 @@
-/// <reference path="./consumer.ts"/>
-
 class powerPlant extends consumer{
 		
 	private lastUpdate : number;

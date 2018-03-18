@@ -1,6 +1,3 @@
-/// <reference path="./soul.ts"/>
-/// <reference path="./global.d.ts"/>
-
 class resources{
   private lastUpdate : number;
 

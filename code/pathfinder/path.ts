@@ -1,6 +1,3 @@
-/// <reference path="./waypoint.ts"/>
-/// <reference path="./node.ts"/>
-
 class path{
 	private waypoints : waypoint[];
 	

@@ -1,20 +1,3 @@
-/// <reference path="./building.ts"/>
-/// <reference path="./buildings/ghetto.ts"/>
-/// <reference path="./buildings/ziggurat.ts"/>
-/// <reference path="./buildings/crusher.ts"/>
-/// <reference path="./buildings/bigCrusher.ts"/>
-/// <reference path="./buildings/warper.ts"/>
-/// <reference path="./buildings/powerPlant.ts"/>
-/// <reference path="./resources.ts"/>
-/// <reference path="./buildingView.ts"/>
-/// <reference path="./painBuildingProgress.ts"/>
-/// <reference path="./soulView.ts"/>
-/// <reference path="./actor.ts"/>
-/// <reference path="./soulActor.ts"/>
-/// <reference path="./wanderingActor.ts"/>
-/// <reference path="./concentrateView.ts"/>
-/// <reference path="./global.d.ts"/>
-
 class mapView{
   private tempBuild : building = null;
   private deleting : boolean = false;

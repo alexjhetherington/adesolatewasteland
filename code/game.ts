@@ -1,12 +1,3 @@
-/// <reference path="./gridRenderer.ts"/>
-/// <reference path="./story.ts"/>
-/// <reference path="./resources.ts"/>
-/// <reference path="./resourceView.ts"/>
-/// <reference path="./mapView.ts"/>
-/// <reference path="./endView.ts"/>
-/// <reference path="./loadingView.ts"/>
-/// <reference path="./global.d.ts"/>
-
 class Game{
 
   private mapRenderer : mapView = null;

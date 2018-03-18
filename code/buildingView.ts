@@ -1,7 +1,3 @@
-/// <reference path="./soul.ts"/>
-/// <reference path="./buildings/ghetto.ts"/>
-/// <reference path="./buildings/ziggurat.ts"/>
-
 class buildingView{
 
   private div : HTMLElement = null;

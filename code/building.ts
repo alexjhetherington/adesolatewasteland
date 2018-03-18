@@ -1,6 +1,3 @@
-/// <reference path="./soul.ts"/>
-/// <reference path="./map.ts"/>
-
 class building{
   private x : number;
   private y : number;

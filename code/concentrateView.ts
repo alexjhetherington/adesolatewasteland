@@ -1,8 +1,3 @@
-/// <reference path="./soulView.ts"/>
-/// <reference path="./resources.ts"/>
-/// <reference path="./mapView.ts"/>
-/// <reference path="./soul.ts"/>
-
 class concentrateView{
 	
 	private parent : HTMLElement = null;

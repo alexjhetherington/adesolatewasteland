@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingKill.ts"/>
-
 class oasis extends painBuildingKill{
 	
 	private oasisPain : number = 0;

@@ -1,13 +1,3 @@
-/// <reference path="./building.ts"/>
-/// <reference path="./buildings/ghetto.ts"/>
-/// <reference path="./buildings/warper.ts"/>
-/// <reference path="./pathfinder/pathfinder.ts"/>
-/// <reference path="./hellPathGraph.ts"/>
-/// <reference path="./actor.ts"/>
-/// <reference path="./soulActor.ts"/>
-/// <reference path="./multipleSoulActor.ts"/>
-/// <reference path="./resources.ts"/>
-
 class map{
   private height : number = 28;
   private width : number = 50;

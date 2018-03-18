@@ -1,6 +1,3 @@
-/// <reference path="./actor.ts"/>
-/// <reference path="./buildings/consumer.ts"/>
-
 class multipleSoulActor extends actor{
 	
 	private soulIds : number[];

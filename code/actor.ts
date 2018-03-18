@@ -1,8 +1,3 @@
-/// <reference path="./pathfinder/waypoint.ts"/>
-/// <reference path="./pathfinder/path.ts"/>
-/// <reference path="./pathfinder/pathFollower.ts"/>
-/// <reference path="./pathfinder/pathfinder.ts"/>
-
 class actor{
 	protected pathFollower : pathFollower = new pathFollower();
 	

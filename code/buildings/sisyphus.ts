@@ -1,5 +1,3 @@
-/// <reference path="./painBuildingTorture.ts"/>
-
 class sisyphus extends painBuildingTorture{
 	
 	constructor(map : map, resources : resources){

@@ -1,6 +1,3 @@
-/// <reference path="./actor.ts"/>
-/// <reference path="./buildings/consumer.ts"/>
-
 class soulActor extends actor{
 	
 	private soulId : number;

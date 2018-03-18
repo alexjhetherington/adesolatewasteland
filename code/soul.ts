@@ -1,5 +1,3 @@
-/// <reference path="./charGenData.ts"/>
-
 class soul{
   private id : number;
 

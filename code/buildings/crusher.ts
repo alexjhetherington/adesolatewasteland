@@ -1,5 +1,3 @@
-/// <reference path="./consumer.ts"/>
-
 class crusher extends consumer{
 			
 	private lastUpdate : number;
