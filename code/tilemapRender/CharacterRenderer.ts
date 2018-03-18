@@ -48,12 +48,12 @@ class CharacterRenderer{
 			characterContext.fillStyle = this.colour;
 			
 			if(this.shadow != null){
-				this.canvasContext.shadowColor = this.shadow;
-				this.canvasContext.shadowBlur = 5;
+				characterContext.shadowColor = this.shadow;
+				characterContext.shadowBlur = 5;
 			}
 			else{
-				this.canvasContext.shadowColor = "rgba(0,0,0,0)";
-				this.canvasContext.shadowBlur = 0;
+				characterContext.shadowColor = "rgba(0,0,0,0)";
+				characterContext.shadowBlur = 0;
 			}
 			
 			characterContext.fillText(character, 0.5 * this.tileWidth, 0.5 * this.fontSize);

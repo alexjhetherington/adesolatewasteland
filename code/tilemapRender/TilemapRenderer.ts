@@ -198,6 +198,11 @@ class TilemapRenderer{
 			var colourShadow = characterKeys[i].split(",");
 			var colour = colourShadow[0];
 			var shadow = null;
+						
+			if(colourShadow[1] != "null" && colourShadow[1] != "undefined"){
+				shadow = colourShadow[1];
+			}
+			
 			var characterRenderer = new CharacterRenderer(this.offContext, this.tileWidth, this.fontSize, this.font, colour, shadow)
 			for(var j = 0; j < characterDictionary[characterKeys[i]].length; j++){
 				var tileX = characterDictionary[characterKeys[i]][j][0];
