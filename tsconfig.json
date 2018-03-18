@@ -3,9 +3,5 @@
 		"lib" : [ "es7", "DOM" ],
 		"outFile" : "main.js",
 		"watch": true
-	},
-
-	"files": [
-		"hell.ts"
-	]
+	}
 }

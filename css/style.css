@@ -123,12 +123,25 @@ button:active{
 	list-style-type: none;
 }
 
+.canvasDiv{
+	position : relative;
+	vertical-align : top;
+	display : inline-block;
+}
+
+.overlayCanvas{
+	position : absolute;
+	top : 0px;
+	left: 0px;
+}
+
 canvas{
-  border: 1px solid;
+	border: 1px solid;
 	border-color: grey;
 	margin-top: 1.5em;
-	vertical-align: top;
 }
+
+
 
 hr { 
     margin-top: 0.5em;

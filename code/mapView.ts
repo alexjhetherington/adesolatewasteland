@@ -15,8 +15,7 @@
 /// <reference path="./concentrateView.ts"/>
 /// <reference path="./global.d.ts"/>
 
-class mapView extends gridRenderer{
-
+class mapView{
   private tempBuild : building = null;
   private deleting : boolean = false;
   private roading : boolean = false;
@@ -35,17 +34,50 @@ class mapView extends gridRenderer{
 	
 	private drawnWarperButton : boolean = false;
 	
+	private tilemapRenderer : TilemapRenderer = null;	
+	private transientRenderer : TransientRenderer = null;
+	
+	private canvasDiv = null;
+	
+	private parent : HTMLElement;
+	private map : map;
+	
+	private tileWidth : number;
+	private fontSize : number;
 
   constructor(parent : HTMLElement, font : string, fontSize: number, tileWidthAdjust : number, tileWidthOverride : number, map : map, resources : resources){
-      super(parent, font, fontSize, tileWidthAdjust, map, tileWidthOverride);
-      this.resources = resources;
+		this.parent = parent;
+		this.map = map;
+		
+		this.tileWidth = tileWidthOverride;
+		this.fontSize = fontSize;
+	
+		this.tilemapRenderer = new TilemapRenderer(map.getWidth(), map.getHeight(), font, fontSize, tileWidthOverride);
+		this.transientRenderer = new TransientRenderer(map.getWidth(), map.getHeight(), font, fontSize, tileWidthOverride);
+		this.resources = resources;
   }
 	
-  public createView(){
-    //this.cancel();
+	//TODO Check this
+	//TODO Stop rendering to off screen canvas' (of which there will be 4 after this)
+	public destroyView(){
+		this.parent.removeChild(this.canvasDiv);
+		this.canvasDiv = null;
+    this.parent.removeChild(this.buildingMenu);
+    this.buildingMenu = null;
+  }
+	
+  public createView(){		
+		//Create Canvas		
+		this.canvasDiv = document.createElement("div");
+		this.canvasDiv.className = "canvasDiv";
+		this.parent.appendChild(this.canvasDiv);
 		
-		//Create Canvas
-    super.createView();
+		var backgroundCanvas = this.tilemapRenderer.createCanvas();
+		this.canvasDiv.appendChild(backgroundCanvas);
+		
+		var overlayCanvas = this.transientRenderer.createCanvas();
+		overlayCanvas.className = "overlayCanvas";
+		this.canvasDiv.appendChild(overlayCanvas);
 		
 		this.buildingMenu = document.createElement("div");
 		this.buildingMenu.className = "buildingMenu";
@@ -151,12 +183,12 @@ class mapView extends gridRenderer{
 		}
 
     this.mouseOnCanvas = false;
-    this.canvas.onmousemove = (event) => this.mouseMoved(event);
-    this.canvas.onmouseenter = (event) => {this.mouseOnCanvas = true;}
-    this.canvas.onmouseleave = (event) => {this.mouseOnCanvas = false; this.mouseDown = false;}
-    this.canvas.onmousedown = (event) => {this.mouseDown = true;}
-    this.canvas.onmouseup = (event) => {this.mouseDown = false;}
-    this.canvas.onclick = () => this.canvasClick();
+    this.transientRenderer.getCanvas().onmousemove = (event) => this.mouseMoved(event);
+    this.transientRenderer.getCanvas().onmouseenter = (event) => {this.mouseOnCanvas = true;}
+    this.transientRenderer.getCanvas().onmouseleave = (event) => {this.mouseOnCanvas = false; this.mouseDown = false;}
+    this.transientRenderer.getCanvas().onmousedown = (event) => {this.mouseDown = true;}
+    this.transientRenderer.getCanvas().onmouseup = (event) => {this.mouseDown = false;}
+    this.transientRenderer.getCanvas().onclick = () => this.canvasClick();
   }
 	
 	private setCostLabel(building : building){
@@ -188,12 +220,6 @@ class mapView extends gridRenderer{
 			document.getElementById(labelId).innerHTML = building.getNextBones() + " bones";
 		}
 	}
-
-  public destroyView(){
-    super.destroyView();
-    this.parent.removeChild(this.buildingMenu);
-    this.buildingMenu = null;
-  }
 	
 	public createFakeListButton(buttonList : HTMLUListElement, label : string, descId : string){
     var buttonLi = document.createElement('li');
@@ -243,9 +269,9 @@ class mapView extends gridRenderer{
 	}
 
   public mouseMoved(evt){
-      var rect = this.canvas.getBoundingClientRect();
-      this.mouseX = Math.round((evt.clientX-rect.left)/(rect.right-rect.left)*this.canvas.width);
-      this.mouseY = Math.round((evt.clientY-rect.top)/(rect.bottom-rect.top)*this.canvas.height);
+      var rect = this.tilemapRenderer.getCanvas().getBoundingClientRect();
+      this.mouseX = Math.round((evt.clientX-rect.left)/(rect.right-rect.left)*this.tilemapRenderer.getCanvas().width);
+      this.mouseY = Math.round((evt.clientY-rect.top)/(rect.bottom-rect.top)*this.tilemapRenderer.getCanvas().height);
 
       var gridSquareX = Math.floor(this.mouseX / this.tileWidth);
       var gridSquareY = Math.floor(this.mouseY / this.fontSize);
@@ -284,15 +310,18 @@ class mapView extends gridRenderer{
 	}
 
   public renderAll(){
-    if(this.canvas != null){
-      super.renderBase();
+    if(this.canvasDiv != null){
+			this.tilemapRenderer.setAllNextTilesBlank();
+			
       this.renderAllBuildings();
       this.renderAllRoads();
 			this.renderAllActors();
       this.renderTempBuild();
       this.renderMouseSquare();
-			this.renderDebug();
-      super.finishRendering();
+			//this.renderDebug();			
+			
+			this.tilemapRenderer.finishRendering();
+			this.transientRenderer.finishRendering();
     }
   }
 	
@@ -307,15 +336,15 @@ class mapView extends gridRenderer{
 	public renderActor(actor : actor){
 		if(actor.getX() != null && actor.getY() != null){
 			if(actor instanceof multipleSoulActor){
-				super.renderCharacter(actor.getX(), actor.getY(), "\u25A0", actor.getColour()); //Very enjoyable that the diamond character ends in 666 in hex
+				this.transientRenderer.renderTile(actor.getX(), actor.getY(), "\u25A0", actor.getColour(), null, null);
 			}
 			else{
-				super.renderCharacter(actor.getX(), actor.getY(), "\u2666", actor.getColour()); //Very enjoyable that the diamond character ends in 666 in hex
+				this.transientRenderer.renderTile(actor.getX(), actor.getY(), "\u2666", actor.getColour(), null, null); //Very enjoyable that the diamond character ends in 666 in hex
 			}
 		}
 	}
 	
-	public renderDebug(){
+	/*public renderDebug(){
 		if(this.debugPathfindingNodes){		
 			for(var x = 0; x < this.map.getWidth(); x++){
 				for(var y = 0; y < this.map.getHeight(); y++){
@@ -330,7 +359,7 @@ class mapView extends gridRenderer{
 				}
 			}
 		}
-	}
+	}*/
 
   public renderTempBuild(){
     if(this.tempBuild != null && this.mouseOnCanvas){
@@ -381,30 +410,30 @@ class mapView extends gridRenderer{
 				if(hoverBuilding != null){
 					return;
 				}
-        super.renderGridSquare(gridSquareX, gridSquareY, ' ', 'white', 'red');
+				this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, ' ', 'white', 'red', null);
       }
       else if (this.roading){
 				if(hoverBuilding == null){
-					super.renderGridSquare(gridSquareX, gridSquareY, 'R', 'white', 'black');
+					this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, 'R', 'white', 'black', null);
 				}
 				else{
-					super.renderGridSquare(gridSquareX, gridSquareY, 'R', 'white', 'red');
+					this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, 'R', 'white', 'red', null);
 				}
       }
 			else if (this.settingPathfindingDest){
-				super.renderGridSquare(gridSquareX, gridSquareY, 'd', 'white', 'blue');
+				this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, 'd', 'white', 'blue', null);
 			}
 			else if (hoverBuilding != null){
-				super.renderGridSquare(gridSquareX, gridSquareY, '?', 'white', 'black');
+				this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, '?', 'white', 'black', null);
 			}
       else if (this.tempBuild == null){
 				var selectedActor = this.map.getActorOccupyingGridIndex(gridSquareX, gridSquareY);
 				
 				if(selectedActor != null){
-					super.renderGridSquare(gridSquareX, gridSquareY, '?', 'white', 'black');
+					this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, '?', 'white', 'black', null);
 				}	
 				else{
-					super.renderGridSquare(gridSquareX, gridSquareY, ' ', 'white', 'black');
+					this.tilemapRenderer.renderTile(gridSquareX, gridSquareY, ' ', 'white', 'black', null);
 				}
       }
     }
@@ -420,10 +449,10 @@ class mapView extends gridRenderer{
     for(var x = 0; x < building.getWidth(); x++){
       for(var y = 0; y < building.getHeight(); y++){
 				if(!warped){
-					super.renderGridSquare(building.getX() + x, building.getY() + y, building.getTile(x, y), colour, background);
+					this.tilemapRenderer.renderTile(building.getX() + x, building.getY() + y, building.getTile(x, y), colour, background, null);
 				}
 				else{
-					super.renderGridSquare(building.getX() + x, building.getY() + y, building.getTile(x, y), colour, background, 'RoyalBlue', 5);
+					this.tilemapRenderer.renderTile(building.getX() + x, building.getY() + y, building.getTile(x, y), colour, background, 'RoyalBlue');
 				}					
       }
     }
@@ -488,7 +517,7 @@ class mapView extends gridRenderer{
 				tile = '\u256c';
       }
 
-      super.renderGridSquare(x, y, tile);
+			this.tilemapRenderer.renderTile(x, y, tile, 'black', 'white', null);
     }
   }
 
@@ -510,8 +539,8 @@ class mapView extends gridRenderer{
 	public buildingOutOfBounds(build : building){
 		if(build.getX() < 0 ||
 		build.getY() < 0 ||
-		build.getX() + build.getWidth() > this.width ||
-		build.getY() + build.getHeight() > this.height){
+		build.getX() + build.getWidth() > this.map.getWidth() ||
+		build.getY() + build.getHeight() > this.map.getHeight()){
 			return true;
 		}
 		
