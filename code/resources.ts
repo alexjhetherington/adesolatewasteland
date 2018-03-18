@@ -127,7 +127,19 @@ class resources{
   }
 	
 	public returnBuildingResources(building : building){
-		this.soulWind += building.getDeleteSouls();
+		var buildingTotal = building.getDeleteSouls();
+		var spentBones = building.getMostRecentBones();
+		var occupants = buildingTotal - spentBones;
+		
+		var percentAsBones = 0.2;
+		
+		var asEddy = Math.ceil(spentBones * (1 - percentAsBones));
+		var asBones = Math.floor(spentBones * percentAsBones);
+		
+		this.soulWind += occupants;
+		this.soulWind += asEddy;
+		
+		this.bonesCount += asBones;
 	}
 	
 	public returnActorResources(actor : actor){
